@@ -11,8 +11,8 @@ namespace JobHunt.Models
         public string Notes { get; set; }
         public DateTime DateAdded { get; set; }
         public DateTime Deadline { get; set; }
-        public byte[] Resume { get; set; }
-        public byte[] CoverLetter { get; set; }
+        public string Resume { get; set; }
+        public string CoverLetter { get; set; }
         public string Status { get; set; }
 
         public virtual Company Company { get; set; }
