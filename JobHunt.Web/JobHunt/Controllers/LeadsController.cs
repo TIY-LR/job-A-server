@@ -88,7 +88,7 @@ namespace JobHunt.Controllers
             lead.Id = newlead.Id;
             lead.Deadline = newlead.Deadline;
             lead.PostTime = newlead.DateAdded;
-            return Ok(lead);
+            return Ok(new { lead = lead });
         }
 
         // DELETE: api/Leads/5
