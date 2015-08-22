@@ -26,16 +26,15 @@ namespace JobHunt.Controllers
         }
 
         // POST api/values
-<<<<<<< HEAD
         public Contact Post([FromBody]Contact c)
         {
             return c;
-=======
+        }
+        
         [Route("ScottsRoute", Name = "ScottsRoute")]
         public string Get(string resume)
         {
             return "test";
->>>>>>> Scott's-Branch
         }
 
         // PUT api/values/5
