@@ -19,8 +19,18 @@ namespace JobHunt.Controllers
         // GET: api/Contacts
         public object GetContacts()
         {
-            var query = db.Contacts.Select(t => new { Id = t.Id, FirstName =});
-            return db.Contacts;
+            var query = db.Contacts.Select(t => new
+            {
+                Id = t.Id,
+                FirstName = t.FirstName,
+                LastName = t.LastName,
+                Email = t.Email,
+                TwitterHandle = t.TwitterHandle,
+                Phone = t.Phone,
+                Title = t.Title,
+                Notes = t.Notes
+            });
+            return new { Contacts = query.ToList() };
         }
 
         // GET: api/Contacts/5
