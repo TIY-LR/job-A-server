@@ -1,9 +1,11 @@
 ﻿using JobHunt.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace JobHunt.Controllers
@@ -24,9 +26,16 @@ namespace JobHunt.Controllers
         }
 
         // POST api/values
+<<<<<<< HEAD
         public Contact Post([FromBody]Contact c)
         {
             return c;
+=======
+        [Route("ScottsRoute", Name = "ScottsRoute")]
+        public string Get(string resume)
+        {
+            return "test";
+>>>>>>> Scott's-Branch
         }
 
         // PUT api/values/5
