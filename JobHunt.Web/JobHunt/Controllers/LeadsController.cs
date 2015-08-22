@@ -79,7 +79,7 @@ namespace JobHunt.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var newlead = new Lead() { Title = lead.JobTitle };
+            var newlead = new Lead() { Title = lead.JobTitle, Deadline = DateTime.Now.AddDays(7), DateAdded = DateTime.Now };
             newlead.Company = new Company() { Name = lead.CompanyName };
             db.Leads.Add(newlead);
            
