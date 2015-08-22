@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity;
 
 namespace JobHunt.Models
 {
@@ -25,6 +26,10 @@ namespace JobHunt.Models
         {
         }
         
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Lead> Leads { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
