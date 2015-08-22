@@ -93,6 +93,7 @@ namespace JobHunt.Controllers
 
         // DELETE: api/Leads/5
         [ResponseType(typeof(Lead))]
+        
         public IHttpActionResult DeleteLead(int id)
         {
             Lead lead = db.Leads.Find(id);
