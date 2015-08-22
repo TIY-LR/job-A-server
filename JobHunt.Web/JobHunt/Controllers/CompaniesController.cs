@@ -29,7 +29,7 @@ namespace JobHunt.Controllers
                 State = c.State,
                 Zipcode = c.Zipcode,
                 Url = c.Url,
-                Contacts = c.Contacts.Select(contact => new { Id = contact.Id, FullName = contact.FullName }),
+                Contacts = c.Contacts.Select(contact => new { Id = contact.Id, FirstName = contact.FirstName, LastName = contact.LastName, FullName = contact.FirstName + " " + contact.LastName }),
                 Leads = c.Leads.Select(l => new { Id = l.Id, JobTitle = l.Title})
             });
             return new { companies = query.ToList() };
