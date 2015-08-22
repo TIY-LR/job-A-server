@@ -19,7 +19,8 @@ namespace JobHunt.Controllers
         // GET: api/Companies
         public object GetCompanies()
         {
-            return new { companies = db.Companies.Select(c => new Company() { Name = c.Name, Address1 = c.Address1, Address2 = c.Address2, City = c.City, State = c.State, Zipcode = c.Zipcode, Url = c.Url, Contacts = c.Contacts, Leads = c.Leads }).ToList() }; 
+            var query = db.Companies.Select(c => new Company() { Id = c.Id, Name = c.Name, Address1 = c.Address1, Address2 = c.Address2, City = c.City, State = c.State, Zipcode = c.Zipcode, Url = c.Url, Contacts = c.Contacts, Leads = c.Leads });
+            return new { companies = query.ToList() }; 
         }
 
         // GET: api/Companies/5
