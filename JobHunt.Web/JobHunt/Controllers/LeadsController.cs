@@ -86,6 +86,8 @@ namespace JobHunt.Controllers
             db.SaveChanges();
 
             lead.Id = newlead.Id;
+            lead.Deadline = newlead.Deadline;
+            lead.PostTime = newlead.DateAdded;
             return Ok(lead);
         }
 
