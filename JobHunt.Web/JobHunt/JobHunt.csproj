@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201508220333551_Contact_company_lead_initial.Designer.cs">
       <DependentUpon>201508220333551_Contact_company_lead_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508220401154_UserFields.cs" />
+    <Compile Include="Migrations\201508220401154_UserFields.Designer.cs">
+      <DependentUpon>201508220401154_UserFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -296,6 +300,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201508220333551_Contact_company_lead_initial.resx">
       <DependentUpon>201508220333551_Contact_company_lead_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508220401154_UserFields.resx">
+      <DependentUpon>201508220401154_UserFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
