@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobHunt.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -23,9 +24,9 @@ namespace JobHunt.Controllers
         }
 
         // POST api/values
-        public string Post([FromBody]string value)
+        public Contact Post([FromBody]Contact c)
         {
-            return value;
+            return c;
         }
 
         // PUT api/values/5
