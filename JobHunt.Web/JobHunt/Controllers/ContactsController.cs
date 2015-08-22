@@ -17,8 +17,9 @@ namespace JobHunt.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Contacts
-        public IQueryable<Contact> GetContacts()
+        public object GetContacts()
         {
+            var query = db.Contacts.Select(t => new { Id = t.Id, FirstName =});
             return db.Contacts;
         }
 

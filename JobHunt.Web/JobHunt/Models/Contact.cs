@@ -7,15 +7,6 @@ namespace JobHunt.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
-        public string FullName
-        {
-            get
-            {
-                return FirstName + " " + LastName;
-            }
-        }
-
         public string Email { get; set; }
         public string TwitterHandle { get; set; }
         public int Phone { get; set; }
@@ -25,5 +16,9 @@ namespace JobHunt.Models
 
         public virtual List<Lead> Leads { get; set; }
         public virtual Company Company { get; set; }
+    }
+    public class ContactHelper
+    {
+        public Contact contact { get; set; }
     }
 }
