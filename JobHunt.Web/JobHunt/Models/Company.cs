@@ -27,4 +27,9 @@ namespace JobHunt.Models
         public virtual List<Contact> Contacts { get; set; }
         public virtual List<Lead> Leads { get; set; }
     }
+
+    public class CompanyHelper
+    {
+        public Company company { get; set; }
+    }
 }

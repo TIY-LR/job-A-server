@@ -17,9 +17,9 @@ namespace JobHunt.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Companies
-        public IQueryable<Company> GetCompanies()
+        public object GetCompanies()
         {
-            return db.Companies;
+            return new { companies = db.Companies.ToList() }; 
         }
 
         // GET: api/Companies/5
@@ -72,17 +72,16 @@ namespace JobHunt.Controllers
 
         // POST: api/Companies
         [ResponseType(typeof(Company))]
-        public IHttpActionResult PostCompany(Company company)
+        public IHttpActionResult PostCompany(CompanyHelper company)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            db.Companies.Add(company);
+            db.Companies.Add(company.company);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = company.Id }, company);
+            return Ok(new { company = company.company});
         }
 
         // DELETE: api/Companies/5
