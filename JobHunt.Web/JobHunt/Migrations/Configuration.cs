@@ -10,7 +10,7 @@ namespace JobHunt.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(JobHunt.Models.ApplicationDbContext context)
