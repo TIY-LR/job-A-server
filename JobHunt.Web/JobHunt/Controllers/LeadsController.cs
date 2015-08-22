@@ -17,10 +17,10 @@ namespace JobHunt.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Leads
-        public IList<LeadCreateVM> GetLeads()
+        public object GetLeads()
         {
             var query = db.Leads.Select(l => new LeadCreateVM() { Id=l.Id, JobTitle = l.Title, CompanyName = l.Company.Name });
-            return query.ToList() ;
+            return new { leads = query.ToList() } ;
         }
 
         // GET: api/Leads/5
