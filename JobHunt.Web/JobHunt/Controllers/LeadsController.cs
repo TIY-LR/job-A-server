@@ -19,7 +19,7 @@ namespace JobHunt.Controllers
         // GET: api/Leads
         public IList<LeadCreateVM> GetLeads()
         {
-            var query = db.Leads.Select(l => new LeadCreateVM() { JobTitle = l.Title, CompanyName = l.Company.Name });
+            var query = db.Leads.Select(l => new LeadCreateVM() { LeadId=l.Id, JobTitle = l.Title, CompanyName = l.Company.Name });
             return query.ToList() ;
         }
 
