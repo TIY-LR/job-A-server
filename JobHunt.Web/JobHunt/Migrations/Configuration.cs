@@ -20,16 +20,21 @@ namespace JobHunt.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-             context.Leads.AddOrUpdate(
-               l => l.Title,
-               new Lead { Title = "Programmer" },
-               new Lead { Title = "Front-End Developer" }
-             );
             context.Companies.AddOrUpdate(
-                c =>c.Name,
-               new Company { Name = "Atlas" },
+                c => c.Name,
+               new Company { Name = "Atlas", City = "Bentonville", State = "AR", Address1 = "1211 SE 28th St", Address2 = "Ste 11", Zipcode = 72712, Url = "www.atlasdsr.com" },
                new Company { Name = "Walmart" }
             );
+
+            context.SaveChanges();
+
+            var company = context.Companies.FirstOrDefault(x => x.Name == "Atlas");
+            context.Leads.AddOrUpdate(
+               l => l.Title,
+               new Lead { Title = "Programmer", Company = company, DateAdded = DateTime.Now, Deadline = DateTime.Now.AddDays(6) },
+               new Lead { Title = "Front-End Developer", Company = company, DateAdded = DateTime.Now, Deadline = DateTime.Now.AddDays(4) }
+             );
+            
             
         }
     }

@@ -17,7 +17,7 @@ namespace JobHunt.Models
         public byte[] CoverLetterBoilerplate { get; set; }
         public byte[] ProfilePic { get; set; }
 
-        
+        public virtual List<Lead> Leads { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
