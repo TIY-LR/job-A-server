@@ -73,22 +73,22 @@ namespace JobHunt.Controllers
 
         // POST: api/Leads
         [ResponseType(typeof(Lead))]
-        public IHttpActionResult PostLead(LeadCreateVM lead)
+        public IHttpActionResult PostLead(PostHelper lead)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var newlead = new Lead() { Title = lead.JobTitle, Deadline = DateTime.Now.AddDays(7), DateAdded = DateTime.Now };
-            newlead.Company = new Company() { Name = lead.CompanyName };
+            var newlead = new Lead() { Title = lead.lead.JobTitle, Deadline = DateTime.Now.AddDays(7), DateAdded = DateTime.Now };
+            newlead.Company = new Company() { Name = lead.lead.CompanyName };
             db.Leads.Add(newlead);
            
             db.SaveChanges();
 
-            lead.Id = newlead.Id;
-            lead.Deadline = newlead.Deadline;
-            lead.PostTime = newlead.DateAdded;
-            return Ok(new { lead = lead });
+            lead.lead.Id = newlead.Id;
+            lead.lead.Deadline = newlead.Deadline;
+            lead.lead.PostTime = newlead.DateAdded;
+            return Ok(new { lead = lead.lead });
         }
 
         // DELETE: api/Leads/5
