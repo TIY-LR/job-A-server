@@ -19,8 +19,20 @@ namespace JobHunt.Controllers
         // GET: api/Companies
         public object GetCompanies()
         {
-            var query = db.Companies.Select(c => new Company() { Id = c.Id, Name = c.Name, Address1 = c.Address1, Address2 = c.Address2, City = c.City, State = c.State, Zipcode = c.Zipcode, Url = c.Url, Contacts = c.Contacts, Leads = c.Leads });
-            return new { companies = query.ToList() }; 
+            var query = db.Companies.Select(c => new
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Address1 = c.Address1,
+                Address2 = c.Address2,
+                City = c.City,
+                State = c.State,
+                Zipcode = c.Zipcode,
+                Url = c.Url,
+                Contacts = c.Contacts.Select(contact => new { FirstName = contact.FirstName }),
+                Leads = c.Leads.Select(l => new { JobTitle = l.Title})
+            });
+            return new { companies = query.ToList() };
         }
 
         // GET: api/Companies/5
@@ -82,7 +94,7 @@ namespace JobHunt.Controllers
             db.Companies.Add(company.company);
             db.SaveChanges();
 
-            return Ok(new { company = company.company});
+            return Ok(new { company = company.company });
         }
 
         // DELETE: api/Companies/5
