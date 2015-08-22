@@ -15,7 +15,7 @@ namespace JobHunt.Models
         public string LastName { get; set; }
         public string Resume { get; set; }
         public string CoverLetterBoilerplate { get; set; }
-        public byte[] ProfilePic { get; set; }
+        public string ProfilePic { get; set; }
 
         public virtual List<Lead> Leads { get; set; }
 
