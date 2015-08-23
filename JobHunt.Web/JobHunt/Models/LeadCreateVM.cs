@@ -17,6 +17,8 @@ namespace JobHunt.Models
         public string Description { get; set; }
         public string Resume { get; set; }
         public string CoverLetter { get; set; }
+
+        //Data integrity: Application, Interview, Negotiation
         public string Status { get; set; }
 
         //Company stuff
