@@ -111,16 +111,23 @@ namespace JobHunt.Controllers
             }
 
             var existingContact = db.Contacts.Find(lead.lead.Contact);
+
             if (existingContact != null)
             {
+                if (existingContact.Company != existingCompany)
+                {
+                    //BAD
+                    return BadRequest("Trying to assoicate contact with a different company");
+                }
                 newlead.Contact = existingContact;
             }
             else
             {
                 newlead.Contact = new Contact() { Id = lead.lead.Contact, FirstName = lead.lead.ContactFirstName, LastName = lead.lead.ContactFirstName, Email = lead.lead.ContactEmail, Phone = lead.lead.ContactPhone, Title = lead.lead.ContactPosition, TwitterHandle = lead.lead.ContactTwitterHandle };
             }
-            db.Leads.Add(newlead);
 
+
+            db.Leads.Add(newlead);
             db.SaveChanges();
 
             lead.lead.CompanyName = newlead.Company.Name;
