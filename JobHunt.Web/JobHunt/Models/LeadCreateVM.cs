@@ -20,6 +20,7 @@ namespace JobHunt.Models
         public string Status { get; set; }
 
         //Company stuff
+        public int Company { get; set; }
         public string CompanyName { get; set; }
         public string Url { get; set; }
         public string Address1 { get; set; }
@@ -29,6 +30,7 @@ namespace JobHunt.Models
         public int Zipcode { get; set; }
 
         //Contact stuff
+        public int Contact { get; set; }
         public string ContactFirstName { get; set; }
         public string ContactLastName { get; set; }
         public string ContactEmail { get; set; }
