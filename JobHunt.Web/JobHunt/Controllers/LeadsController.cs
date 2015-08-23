@@ -19,7 +19,31 @@ namespace JobHunt.Controllers
         // GET: api/Leads
         public object GetLeads()
         {
-            var query = db.Leads.Select(l => new LeadCreateVM() { Id = l.Id, JobTitle = l.Title, CompanyName = l.Company.Name, Status = l.Status.ToString() });
+            var query = db.Leads.Select(l => new LeadCreateVM()
+            {
+                Id = l.Id,
+                JobTitle = l.Title,
+                CompanyName = l.Company.Name,
+                Status = l.Status.ToString(),
+                Company = l.Company.Id,
+                Contact = l.Contact.Id,
+                Address1 = l.Company.Address1,
+                Address2 = l.Company.Address2,
+                City = l.Company.City,
+                ContactEmail = l.Contact.Email,
+                ContactFirstName = l.Contact.FirstName,
+                ContactLastName = l.Contact.LastName,
+                ContactPhone = l.Contact.Phone,
+                ContactPosition = l.Contact.Title,
+                ContactTwitterHandle = l.Contact.TwitterHandle,
+                Deadline = l.Deadline,
+                PostTime = l.DateAdded,
+                Description = l.Description,
+                Notes = l.Notes,
+                State = l.Company.State,
+                Url = l.Company.Url,
+                Zipcode = l.Company.Zipcode
+            });
             return new { leads = query.ToList() };
         }
 
@@ -136,7 +160,8 @@ namespace JobHunt.Controllers
                 lead.lead.Contact = newlead.Contact.Id;
                 lead.lead.ContactFirstName = newlead.Contact.FirstName;
                 lead.lead.ContactLastName = newlead.Contact.LastName;
-            }else
+            }
+            else
             {
                 lead.lead.Contact = 0;
                 lead.lead.ContactFirstName = "";
