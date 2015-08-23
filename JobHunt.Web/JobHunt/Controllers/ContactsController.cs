@@ -37,13 +37,23 @@ namespace JobHunt.Controllers
         [ResponseType(typeof(Contact))]
         public IHttpActionResult GetContact(int id)
         {
-            Contact contact = db.Contacts.Find(id);
+            var contact = db.Contacts.Where(x => x.Id == id).Select(t => new
+            {
+                Id = t.Id,
+                FirstName = t.FirstName,
+                LastName = t.LastName,
+                Email = t.Email,
+                TwitterHandle = t.TwitterHandle,
+                Phone = t.Phone,
+                Title = t.Title,
+                Notes = t.Notes
+            });
             if (contact == null)
             {
                 return NotFound();
             }
 
-            return Ok(contact);
+            return Ok(new { contact = contact });
         }
 
         // PUT: api/Contacts/5
