@@ -39,13 +39,26 @@ namespace JobHunt.Controllers
         [ResponseType(typeof(Company))]
         public IHttpActionResult GetCompany(int id)
         {
-            Company company = db.Companies.Find(id);
+            var company = db.Companies.Where(x=>x.Id ==id ).Select(c => new
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Address1 = c.Address1,
+                Address2 = c.Address2,
+                City = c.City,
+                State = c.State,
+                Zipcode = c.Zipcode,
+                Url = c.Url,
+                Contacts = c.Contacts.Select(contact => contact.Id),
+                Leads = c.Leads.Select(l => l.Id)
+            });
+
             if (company == null)
             {
                 return NotFound();
             }
 
-            return Ok(company);
+            return Ok(new { companies = company });
         }
 
         // PUT: api/Companies/5

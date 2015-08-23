@@ -48,6 +48,7 @@ namespace JobHunt.Controllers
                 Title = t.Title,
                 Notes = t.Notes
             });
+
             if (contact == null)
             {
                 return NotFound();
