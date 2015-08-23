@@ -81,7 +81,7 @@ namespace JobHunt.Controllers
             }
             var newlead = new Lead() { Title = lead.lead.JobTitle, Deadline = DateTime.Now.AddDays(7), DateAdded = DateTime.Now, Notes = lead.lead.Notes, Description = lead.lead.Description, Resume = lead.lead.Resume, CoverLetter = lead.lead.CoverLetter, Status = lead.lead.Status };
             var existingCompany = db.Companies.Find(lead.lead.Company);
-            if (existingCompany.Name != null)
+            if (existingCompany != null)
             {
                 newlead.Company = existingCompany;
             }
@@ -91,7 +91,7 @@ namespace JobHunt.Controllers
             }
 
             var existingContact = db.Contacts.Find(lead.lead.Contact);
-            if(existingContact.LastName !=null)
+            if(existingContact !=null)
             {
                 newlead.Contact = existingContact;
             }
