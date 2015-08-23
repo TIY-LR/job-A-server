@@ -51,7 +51,32 @@ namespace JobHunt.Controllers
         [ResponseType(typeof(Lead))]
         public IHttpActionResult GetLead(int id)
         {
-            Lead lead = db.Leads.Find(id);
+            var lead = db.Leads.Where(x=>x.Id == id).Select(l => new LeadCreateVM()
+            {
+                Id = l.Id,
+                JobTitle = l.Title,
+                CompanyName = l.Company.Name,
+                Status = l.Status.ToString(),
+                Company = l.Company.Id,
+                Contact = l.Contact.Id,
+                Address1 = l.Company.Address1,
+                Address2 = l.Company.Address2,
+                City = l.Company.City,
+                ContactEmail = l.Contact.Email,
+                ContactFirstName = l.Contact.FirstName,
+                ContactLastName = l.Contact.LastName,
+                ContactPhone = l.Contact.Phone,
+                ContactPosition = l.Contact.Title,
+                ContactTwitterHandle = l.Contact.TwitterHandle,
+                Deadline = l.Deadline,
+                PostTime = l.DateAdded,
+                Description = l.Description,
+                Notes = l.Notes,
+                State = l.Company.State,
+                Url = l.Company.Url,
+                Zipcode = l.Company.Zipcode
+            }).FirstOrDefault();
+
             if (lead == null)
             {
                 return NotFound();
