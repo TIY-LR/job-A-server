@@ -30,7 +30,7 @@ namespace JobHunt.Controllers
                 Zipcode = c.Zipcode,
                 Url = c.Url,
                 Contacts = c.Contacts.Select(contact=> contact.Id),
-                Leads = c.Leads.Select(l => new { Id = l.Id, JobTitle = l.Title})
+                Leads = c.Leads.Select(l => l.Id)
             });
             return new { companies = query.ToList() };
         }
