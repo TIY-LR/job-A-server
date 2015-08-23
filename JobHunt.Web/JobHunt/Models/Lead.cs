@@ -3,6 +3,13 @@ using System.IO;
 
 namespace JobHunt.Models
 {
+    public enum Status
+    {
+        Application = 1,
+        Interview = 2,
+        Negotiation = 3
+    }
+
     public class Lead
     {
         public int Id { get; set; }
@@ -13,7 +20,7 @@ namespace JobHunt.Models
         public DateTime Deadline { get; set; }
         public string Resume { get; set; }
         public string CoverLetter { get; set; }
-        public string Status { get; set; }
+        public Status Status { get; set; }
 
         public virtual Company Company { get; set; }
         public virtual Contact Contact { get; set; }

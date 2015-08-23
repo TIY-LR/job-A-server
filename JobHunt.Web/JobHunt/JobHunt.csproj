@@ -221,6 +221,10 @@
     <Compile Include="Migrations\201508221631369_contact_leadslist.Designer.cs">
       <DependentUpon>201508221631369_contact_leadslist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508231500570_leadStatus.cs" />
+    <Compile Include="Migrations\201508231500570_leadStatus.Designer.cs">
+      <DependentUpon>201508231500570_leadStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\LeadCreateVM.cs" />
     <Compile Include="Controllers\LeadsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -324,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508221631369_contact_leadslist.resx">
       <DependentUpon>201508221631369_contact_leadslist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508231500570_leadStatus.resx">
+      <DependentUpon>201508231500570_leadStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -79,7 +79,17 @@ namespace JobHunt.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var newlead = new Lead() { Title = lead.lead.JobTitle, Deadline = DateTime.Now.AddDays(7), DateAdded = DateTime.Now, Notes = lead.lead.Notes, Description = lead.lead.Description, Resume = lead.lead.Resume, CoverLetter = lead.lead.CoverLetter, Status = lead.lead.Status };
+            var newlead = new Lead()
+            {
+                Title = lead.lead.JobTitle,
+                Deadline = DateTime.Now.AddDays(7),
+                DateAdded = DateTime.Now,
+                Notes = lead.lead.Notes,
+                Description = lead.lead.Description,
+                Resume = lead.lead.Resume,
+                CoverLetter = lead.lead.CoverLetter,
+                Status = (Status)(Enum.Parse(typeof(Status), lead.lead.Status))
+            };
             var existingCompany = db.Companies.Find(lead.lead.Company);
             if (existingCompany != null)
             {
@@ -87,7 +97,17 @@ namespace JobHunt.Controllers
             }
             else
             {
-                newlead.Company = new Company() { Id = lead.lead.Company, Name = lead.lead.CompanyName, Url = lead.lead.Url, Address1 = lead.lead.Address1, Address2 = lead.lead.Address2, City = lead.lead.City, State = lead.lead.State, Zipcode = lead.lead.Zipcode };
+                newlead.Company = new Company()
+                {
+                    Id = lead.lead.Company,
+                    Name = lead.lead.CompanyName,
+                    Url = lead.lead.Url,
+                    Address1 = lead.lead.Address1,
+                    Address2 = lead.lead.Address2,
+                    City = lead.lead.City,
+                    State = lead.lead.State,
+                    Zipcode = lead.lead.Zipcode
+                };
             }
 
             var existingContact = db.Contacts.Find(lead.lead.Contact);
