@@ -102,9 +102,9 @@ namespace JobHunt.Controllers
             }
 
             var existingLead = db.Leads.Find(contact.contact.Lead);
-            if (existingLead != null)
+            if (existingLead != null && newContact.Company.Leads.Any(x => x.Id == existingLead.Id))
             {
-                newContact.Leads.Add(existingLead);
+                newContact.Company.Leads.Add(existingLead);
             }
 
             db.Contacts.Add(newContact);
