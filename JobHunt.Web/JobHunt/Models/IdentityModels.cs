@@ -34,11 +34,20 @@ namespace JobHunt.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        
+
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Lead> Leads { get; set; }
+        public DbSet<Resume> Resumes { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Lead>()
+                   .HasOptional(l => l.Resume) // Mark StudentAddress is optional for Student
+                   .WithRequired(r => r.Lead);
+
+            base.OnModelCreating(modelBuilder);
+        }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

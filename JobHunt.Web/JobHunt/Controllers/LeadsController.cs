@@ -86,7 +86,7 @@ namespace JobHunt.Controllers
                 DateAdded = DateTime.Now,
                 Notes = lead.lead.Notes,
                 Description = lead.lead.Description,
-                Resume = lead.lead.Resume,
+                //Resume = lead.lead.Resume,
                 CoverLetter = lead.lead.CoverLetter,
                 Status = (Status)(Enum.Parse(typeof(Status), lead.lead.Status))
             };
