@@ -87,7 +87,7 @@ namespace JobHunt.Controllers
                 Notes = lead.lead.Notes,
                 Description = lead.lead.Description,
                 //Resume = lead.lead.Resume,
-                CoverLetter = lead.lead.CoverLetter,
+                //CoverLetter = lead.lead.CoverLetter,
                 Status = (Status)(Enum.Parse(typeof(Status), lead.lead.Status))
             };
             var existingCompany = db.Companies.Find(lead.lead.Company);

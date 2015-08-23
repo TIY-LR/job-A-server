@@ -39,12 +39,17 @@ namespace JobHunt.Models
         public DbSet<Company> Companies { get; set; }
         public DbSet<Lead> Leads { get; set; }
         public DbSet<Resume> Resumes { get; set; }
+        public DbSet<CoverLetter> CoverLetters { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Lead>()
                    .HasOptional(l => l.Resume) // Mark StudentAddress is optional for Student
                    .WithRequired(r => r.Lead);
+
+            modelBuilder.Entity<CoverLetter>()
+                   .HasOptional(c => c.Lead) 
+                   .WithRequired(r => r.CoverLetter);
 
             base.OnModelCreating(modelBuilder);
         }
