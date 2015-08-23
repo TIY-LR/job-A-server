@@ -121,10 +121,9 @@ namespace JobHunt.Controllers
                 }
                 newlead.Contact = existingContact;
             }
-            //else
-            //{
-            //    return BadRequest("You must select a contact.");
-            //}
+            else
+            {
+            }
 
 
             db.Leads.Add(newlead);
@@ -132,10 +131,17 @@ namespace JobHunt.Controllers
 
             lead.lead.CompanyName = newlead.Company.Name;
             lead.lead.Company = newlead.Company.Id;
-            lead.lead.Contact = newlead.Contact.Id;
-            lead.lead.ContactFirstName = newlead.Contact.FirstName;
-            lead.lead.ContactLastName = newlead.Contact.LastName;
-
+            if (newlead.Contact != null)
+            {
+                lead.lead.Contact = newlead.Contact.Id;
+                lead.lead.ContactFirstName = newlead.Contact.FirstName;
+                lead.lead.ContactLastName = newlead.Contact.LastName;
+            }else
+            {
+                lead.lead.Contact = 0;
+                lead.lead.ContactFirstName = "";
+                lead.lead.ContactLastName = "";
+            }
             return Ok(new { lead = lead.lead });
         }
 
