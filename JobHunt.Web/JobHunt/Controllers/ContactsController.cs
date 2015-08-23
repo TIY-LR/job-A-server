@@ -83,17 +83,21 @@ namespace JobHunt.Controllers
 
         // POST: api/Contacts
         [ResponseType(typeof(Contact))]
-        public IHttpActionResult PostContact(Contact contact)
+        public IHttpActionResult PostContact(ContactHelper contact)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            var newContact = new Contact() { FirstName = contact.contact.FirstName, LastName = contact.contact.LastName};
+            newContact.Company = new Company() { Name = contact.contact.Company.Name };
 
-            db.Contacts.Add(contact);
+            db.Contacts.Add(newContact);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = contact.Id }, contact);
+            contact.contact.Id = newContact.Id;
+
+            return Ok(new { contact = contact.contact });
         }
 
         // DELETE: api/Contacts/5
