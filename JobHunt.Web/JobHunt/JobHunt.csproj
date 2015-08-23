@@ -217,6 +217,7 @@
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ResumesController.cs" />
     <Compile Include="Migrations\201508221631369_contact_leadslist.cs" />
     <Compile Include="Migrations\201508221631369_contact_leadslist.Designer.cs">
       <DependentUpon>201508221631369_contact_leadslist.cs</DependentUpon>
