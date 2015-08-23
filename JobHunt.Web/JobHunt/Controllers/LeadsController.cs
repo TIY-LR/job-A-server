@@ -103,10 +103,7 @@ namespace JobHunt.Controllers
 
             db.SaveChanges();
 
-            lead.lead.Id = newlead.Id;
-            lead.lead.Deadline = newlead.Deadline;
-            lead.lead.PostTime = newlead.DateAdded;
-            return Ok(new { lead = lead.lead });
+            return Ok(new { lead = newlead } );
         }
 
         // DELETE: api/Leads/5
