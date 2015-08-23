@@ -229,6 +229,10 @@
     <Compile Include="Migrations\201508231541595_ResumeItems.Designer.cs">
       <DependentUpon>201508231541595_ResumeItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508231701581_Phonetostring.cs" />
+    <Compile Include="Migrations\201508231701581_Phonetostring.Designer.cs">
+      <DependentUpon>201508231701581_Phonetostring.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\LeadCreateVM.cs" />
     <Compile Include="Controllers\LeadsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -340,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508231541595_ResumeItems.resx">
       <DependentUpon>201508231541595_ResumeItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508231701581_Phonetostring.resx">
+      <DependentUpon>201508231701581_Phonetostring.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
