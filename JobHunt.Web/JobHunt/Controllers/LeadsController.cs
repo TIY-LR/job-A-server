@@ -91,19 +91,19 @@ namespace JobHunt.Controllers
             }
 
             var existingContact = db.Contacts.Find(int.Parse(lead.lead.Contact));
-            if(existingContact !=null)
+            if (existingContact != null)
             {
                 newlead.Contact = existingContact;
             }
             else
             {
-            newlead.Contact = new Contact() { Id = int.Parse(lead.lead.Contact), FirstName = lead.lead.ContactFirstName, LastName = lead.lead.ContactFirstName, Email = lead.lead.ContactEmail, Phone = lead.lead.ContactPhone, Title = lead.lead.ContactPosition, TwitterHandle = lead.lead.ContactTwitterHandle };
+                newlead.Contact = new Contact() { Id = int.Parse(lead.lead.Contact), FirstName = lead.lead.ContactFirstName, LastName = lead.lead.ContactFirstName, Email = lead.lead.ContactEmail, Phone = lead.lead.ContactPhone, Title = lead.lead.ContactPosition, TwitterHandle = lead.lead.ContactTwitterHandle };
             }
             db.Leads.Add(newlead);
 
             db.SaveChanges();
 
-            return Ok(new { lead = newlead } );
+            return Ok(new { lead = newlead });
         }
 
         // DELETE: api/Leads/5
