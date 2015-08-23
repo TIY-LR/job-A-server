@@ -47,9 +47,9 @@ namespace JobHunt.Models
                    .HasOptional(l => l.Resume) // Mark StudentAddress is optional for Student
                    .WithRequired(r => r.Lead);
 
-            modelBuilder.Entity<CoverLetter>()
-                   .HasOptional(c => c.Lead) 
-                   .WithRequired(r => r.CoverLetter);
+            modelBuilder.Entity<Lead>()
+                   .HasOptional(c => c.CoverLetter) 
+                   .WithRequired(r => r.Lead);
 
             base.OnModelCreating(modelBuilder);
         }
