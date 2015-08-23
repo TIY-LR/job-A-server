@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
 namespace JobHunt.Models
 {
-    public class Contact
+    public class ContactCreateVM
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -12,10 +15,13 @@ namespace JobHunt.Models
         public string Phone { get; set; }
         public string Title { get; set; }
         public string Notes { get; set; }
-        //public byte[] emails { get; set; }
 
-        public virtual List<Lead> Leads { get; set; }
-        public virtual Company Company { get; set; }
+        public int Company { get; set; }
+        public int Lead { get; set; }
     }
-    
+
+    public class ContactHelper
+    {
+        public ContactCreateVM contact { get; set; }
+    }
 }

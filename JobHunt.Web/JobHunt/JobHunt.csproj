@@ -234,6 +234,7 @@
     <Compile Include="Migrations\201508231701581_Phonetostring.Designer.cs">
       <DependentUpon>201508231701581_Phonetostring.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContactCreateVM.cs" />
     <Compile Include="Models\LeadCreateVM.cs" />
     <Compile Include="Controllers\LeadsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

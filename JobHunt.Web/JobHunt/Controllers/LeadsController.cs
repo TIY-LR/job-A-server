@@ -19,7 +19,7 @@ namespace JobHunt.Controllers
         // GET: api/Leads
         public object GetLeads()
         {
-            var query = db.Leads.Select(l => new LeadCreateVM() { Id = l.Id, JobTitle = l.Title, CompanyName = l.Company.Name });
+            var query = db.Leads.Select(l => new LeadCreateVM() { Id = l.Id, JobTitle = l.Title, CompanyName = l.Company.Name, Status = l.Status.ToString() });
             return new { leads = query.ToList() };
         }
 
@@ -33,7 +33,7 @@ namespace JobHunt.Controllers
                 return NotFound();
             }
 
-            return Ok(lead);
+            return Ok(new { lead = lead });
         }
 
         // PUT: api/Leads/5
@@ -121,10 +121,10 @@ namespace JobHunt.Controllers
                 }
                 newlead.Contact = existingContact;
             }
-            else
-            {
-                newlead.Contact = new Contact() { Id = lead.lead.Contact, FirstName = lead.lead.ContactFirstName, LastName = lead.lead.ContactFirstName, Email = lead.lead.ContactEmail, Phone = lead.lead.ContactPhone, Title = lead.lead.ContactPosition, TwitterHandle = lead.lead.ContactTwitterHandle };
-            }
+            //else
+            //{
+            //    return BadRequest("You must select a contact.");
+            //}
 
 
             db.Leads.Add(newlead);

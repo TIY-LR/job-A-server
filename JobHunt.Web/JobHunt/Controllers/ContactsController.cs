@@ -89,8 +89,23 @@ namespace JobHunt.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var newContact = new Contact() { FirstName = contact.contact.FirstName, LastName = contact.contact.LastName};
-            newContact.Company = new Company() { Name = contact.contact.Company.Name };
+            var newContact = new Contact() { FirstName = contact.contact.FirstName, LastName = contact.contact.LastName, Title = contact.contact.Title, Email = contact.contact.Email, Phone = contact.contact.Phone, TwitterHandle = contact.contact.TwitterHandle, Notes = contact.contact.Notes };
+
+            var existingCompany = db.Companies.Find(contact.contact.Company);
+            if (existingCompany != null)
+            {
+                newContact.Company = existingCompany;
+            }
+            else
+            {
+                return BadRequest("You must select a company.");
+            }
+
+            var existingLead = db.Leads.Find(contact.contact.Lead);
+            if (existingLead != null)
+            {
+                newContact.Leads.Add(existingLead);
+            }
 
             db.Contacts.Add(newContact);
             db.SaveChanges();

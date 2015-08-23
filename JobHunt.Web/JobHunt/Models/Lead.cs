@@ -5,9 +5,11 @@ namespace JobHunt.Models
 {
     public enum Status
     {
-        Application = 1,
-        Interview = 2,
-        Negotiation = 3
+          Application = 1
+        , Interview = 2
+        , Negotiation = 3
+        , Accepted = 4
+        , Rejected = 5
     }
 
     public class Lead
